@@ -1327,9 +1327,9 @@ section {
     background-repeat: no-repeat;
     background-position: right var(--spacing-md) center;
     padding-right: var(--spacing-xl);
-    background-color: #a0a0a0; /* Even darker background for maximum contrast */
-    border: 2px solid #222; /* Even darker border for maximum contrast */
-    color: #000; /* Black text for maximum contrast */
+    background-color: var(--color-dark-lightest); /* Use dark background for contrast */
+    border: 2px solid var(--color-accent); /* Accent border */
+    color: var(--color-accent); /* Accent text */
     font-weight: 600;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     transition: all 0.2s ease;
@@ -2114,10 +2114,10 @@ section {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,240,255,0.7) 0%, rgba(0,240,255,0) 70%); /* Increased opacity */
-    transform: translate(-50%, -50%) scale(0.2); /* Start slightly larger */
+    background: radial-gradient(circle, var(--color-accent) 0%, rgba(0,240,255,0) 70%);
+    transform: translate(-50%, -50%) scale(0.2);
     opacity: 0;
-    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Slower transition */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 }
 
 .service-card:hover .meta-ads-icon::after {
@@ -2133,10 +2133,10 @@ section {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,165,0,0.7) 0%, rgba(255,165,0,0) 70%); /* Increased opacity */
-    transform: translate(-50%, -50%) scale(0.2); /* Start slightly larger */
+    background: radial-gradient(circle, var(--color-accent-dark) 0%, rgba(0,240,255,0) 70%);
+    transform: translate(-50%, -50%) scale(0.2);
     opacity: 0;
-    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Slower transition */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 }
 
 .service-card:hover .google-ads-icon::before {
@@ -2158,6 +2158,23 @@ section {
 .email-icon {
     position: relative;
     overflow: hidden;
+}
+.email-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-accent-light) 0%, rgba(0,240,255,0) 70%);
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+.service-card:hover .email-icon::after {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
 }
 
 .submit-button .arrow-icon {
@@ -2875,4 +2892,187 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
 
 .skip-to-content:focus {
     top: 0;
+}
+/* --- Add this at the end of your file for best effect --- */
+
+/* Fix select dropdown options for dark mode */
+.form-select,
+select {
+    background-color: var(--color-dark-lightest) !important;
+    color: var(--color-accent) !important;
+    border: 2px solid var(--color-accent) !important;
+}
+
+.form-select option,
+select option {
+    background-color: var(--color-dark-lightest) !important;
+    color: var(--color-white) !important;
+}
+
+/* For Firefox */
+select:-moz-focusring {
+    color: var(--color-white) !important;
+    text-shadow: 0 0 0 var(--color-white);
+}
+
+/* For Windows high contrast mode */
+@media (forced-colors: active) {
+    .form-select,
+    select,
+    .form-select option,
+    select option {
+        forced-color-adjust: none;
+        background: Window !important;
+        color: WindowText !important;
+    }
+}
+
+// Place this at the end of your file
+
+/* --- Unify service card styles for all buttons --- */
+.service-card {
+    background-color: var(--color-dark-lightest) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--spacing-lg) !important;
+    border: 1px solid var(--color-accent) !important;
+    color: var(--color-white) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    transition: all var(--transition-normal) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+
+.service-card:hover {
+    background-color: var(--color-dark-lighter) !important;
+    border-color: var(--color-accent-light) !important;
+    color: var(--color-accent) !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
+    transform: translateY(-5px) scale(1.03) !important;
+}
+
+/* --- Force consistent hover effect for ALL service cards --- */
+.service-card {
+    background-color: var(--color-dark-lightest);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-accent);
+    color: var(--color-white);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: 
+        background-color var(--transition-normal),
+        border-color var(--transition-normal),
+        color var(--transition-normal),
+        box-shadow var(--transition-normal),
+        transform var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    background-color: var(--color-dark-lighter);
+    border-color: var(--color-accent-light);
+    color: var(--color-accent);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    transform: translateY(-5px) scale(1.03);
+    z-index: 2;
+}
+
+/* Remove all custom hover/animation for specific cards */
+.service-card .service-icon,
+.service-card .service-title,
+.service-card .service-description {
+    color: var(--color-white);
+    transition: color var(--transition-normal), text-shadow var(--transition-normal), transform var(--transition-normal);
+}
+
+.service-card:hover .service-icon {
+    color: var(--color-accent-light);
+    text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+    transform: scale(1.1);
+}
+
+/* Remove/override any custom animation or effect for specific cards */
+.meta-ads-card .service-icon,
+.google-ads-card .service-icon,
+.email-icon,
+.seo-card .service-icon,
+.automation-card .service-icon,
+.zapier-icon,
+.tag-icon {
+    animation: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+/* Remove custom ::before/::after hover effects for all service cards */
+.service-card::before,
+.service-card::after,
+.meta-ads-icon::after,
+.google-ads-icon::before,
+.email-icon::after,
+.zapier-icon::after,
+.tag-icon::after {
+    display: none !important;
+    content: none !important;
+    opacity: 0 !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Make sure all icons look the same */
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    display: inline-block;
+}
+
+
+
+/* If you want to keep the hover effect for Zapier and Tag Manager only, remove the above ::before/::after rule. */
+
+/* Remove list-style dots from navigation */
+.nav-links,
+.footer-links ul,
+.footer-nav {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/* Remove list-style dots from all unordered lists in navigation */
+.nav-links li,
+.footer-links ul li,
+.footer-nav li {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* Remove list-style dots from ALL navigation lists */
+ul.nav-links,
+ul.footer-links,
+ul.footer-nav {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+ul.nav-links li,
+ul.footer-links li,
+ul.footer-nav li {
+    list-style: none !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* Also remove from direct nav if used */
+nav ul,
+nav li {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
 }
