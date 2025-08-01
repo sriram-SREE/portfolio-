@@ -3,394 +3,594 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Performance Marketing & Automation Expert - Helping E-Commerce Brands & Agencies Scale Through Data-Driven Growth Strategies">
-    <title>Growth Hacker & Marketing Automation Expert</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    
-    <!-- Fonts -->
+    <title>Fuji Zen - Seasonal Vegetarian Fine Dining</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Lottie Animation Library -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Zen Maru Gothic', sans-serif;
+        }
+        
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+        
+        .parallax {
+            transform: translateZ(0);
+            transition: transform 0.5s ease-out;
+        }
+        
+        .glassmorphic {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .season-spring {
+            --primary: #E8F5E8;
+            --accent: #90EE90;
+            --text: #2D5016;
+        }
+        
+        .season-summer {
+            --primary: #E6F3FF;
+            --accent: #6DAEDB;
+            --text: #1A365D;
+        }
+        
+        .season-autumn {
+            --primary: #FFF8E1;
+            --accent: #FFC857;
+            --text: #8B4513;
+        }
+        
+        .season-winter {
+            --primary: #F0F8FF;
+            --accent: #E0E4E8;
+            --text: #2C3E50;
+        }
+        
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+        
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(109, 174, 219, 0.3) 0%, rgba(255, 200, 87, 0.2) 100%);
+        }
+        
+        .menu-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-glass {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .booking-form {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
 </head>
-<body>
+<body class="overflow-x-hidden season-summer">
+    <!-- Custom Cursor -->
+    <div class="custom-cursor bg-white"></div>
+    
     <!-- Navigation -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <a href="#" class="logo">Growth<span>Expert</span></a>
-                <div class="nav-toggle" id="navToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+    <nav class="fixed top-0 w-full z-50 nav-glass">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-gray-800">
+                    <span class="text-blue-600">富士</span> Zen
                 </div>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#hero" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <div class="theme-toggle" id="themeToggle">
-                    <span class="theme-toggle-icon"></span>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="#seasons" class="text-gray-700 hover:text-blue-600 transition-colors">Seasons</a>
+                    <a href="#menu" class="text-gray-700 hover:text-blue-600 transition-colors">Menu</a>
+                    <a href="#experience" class="text-gray-700 hover:text-blue-600 transition-colors">Experience</a>
+                    <a href="#booking" class="text-gray-700 hover:text-blue-600 transition-colors">Booking</a>
                 </div>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="headline">Fueling Growth for E-Commerce Brands & Agencies with Performance Marketing + Automation</h1>
-                    <p class="subtext">White-label execution. Fast results. No fluff.</p>
-                    <div class="cta-buttons">
-                        <a href="#contact" class="cta-primary">📞 Book Free Call</a>
-                        <a href="#" class="cta-secondary">⬇ Download Portfolio</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_ystsffqy.json" background="transparent" speed="1" style="width: 100%; height: 100%" loop autoplay></lottie-player>
+                <div class="flex items-center space-x-4">
+                    <button id="seasonToggle" class="p-2 rounded-full glassmorphic hover:bg-white hover:bg-opacity-20 transition-all">
+                        <span class="text-xl">🌸</span>
+                    </button>
+                    <button id="audioToggle" class="p-2 rounded-full glassmorphic hover:bg-white hover:bg-opacity-20 transition-all">
+                        <span class="text-xl">🔊</span>
+                    </button>
                 </div>
             </div>
-        </section>
+        </div>
+    </nav>
 
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>About</h2>
-                    <p class="section-subtitle">Growth Hacking & Automation Expertise</p>
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="floating-particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 1.5s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 2.5s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 3.5s;"></div>
+        </div>
+        
+        <div class="absolute inset-0 parallax" id="heroBackground" style="background: linear-gradient(135deg, #6DAEDB 0%, #E0E4E8 50%, #FFC857 100%); background-size: 200% 200%; animation: gradientShift 8s ease-in-out infinite;">
+        </div>
+        
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <div class="relative z-10 text-center text-white px-6">
+            <h1 class="text-6xl md:text-8xl font-light mb-6 fade-in">
+                <span class="block">富士 Zen</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 fade-in" style="animation-delay: 0.5s;">
+                Seasonal Vegetarian Fine Dining
+            </p>
+            <p class="text-lg mb-12 max-w-2xl mx-auto fade-in" style="animation-delay: 1s;">
+                Experience the changing seasons of Mount Fuji through our carefully crafted plant-based cuisine
+            </p>
+            <button class="px-8 py-4 glassmorphic text-white font-medium rounded-full hover:bg-white hover:bg-opacity-20 transition-all transform hover:scale-105 fade-in" style="animation-delay: 1.5s;">
+                Begin Your Journey
+            </button>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seasons Section -->
+    <section id="seasons" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-light text-center mb-16 scroll-reveal">The Four Seasons of Fuji</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Spring -->
+                <div class="season-card relative group cursor-pointer scroll-reveal" data-season="spring">
+                    <div class="aspect-square rounded-2xl overflow-hidden mb-6">
+                        <div class="w-full h-full bg-gradient-to-br from-green-200 to-pink-200 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-700">
+                            🌸
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-medium mb-4">春 Spring</h3>
+                    <p class="text-gray-600">Fresh mountain vegetables and delicate sakura-inspired dishes celebrate renewal and growth.</p>
                 </div>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p class="positioning-statement">I help e-commerce brands and marketing agencies scale through data-driven growth strategies and marketing automation systems that deliver measurable ROI.</p>
-                        <div class="skills-container">
-                            <div class="skill-item">
-                                <div class="skill-icon meta-icon"></div>
-                                <span>Meta Ads</span>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon google-icon"></div>
-                                <span>Google Ads</span>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon email-icon"></div>
-                                <span>Email Workflows</span>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon zapier-icon"></div>
-                                <span>Zapier</span>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon tag-icon"></div>
-                                <span>Tag Manager</span>
-                            </div>
+
+                <!-- Summer -->
+                <div class="season-card relative group cursor-pointer scroll-reveal" data-season="summer">
+                    <div class="aspect-square rounded-2xl overflow-hidden mb-6">
+                        <div class="w-full h-full bg-gradient-to-br from-blue-200 to-cyan-200 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-700">
+                            🌊
                         </div>
                     </div>
-                    <div class="about-visual">
-                        <div class="logo-grid">
-                            <!-- Using placeholder colored divs instead of SVG logos -->
-                            <div class="platform-logo meta-logo"></div>
-                            <div class="platform-logo google-logo"></div>
-                            <div class="platform-logo klaviyo-logo"></div>
-                            <div class="platform-logo zapier-logo"></div>
-                            <div class="platform-logo shopify-logo"></div>
-                            <div class="platform-logo hubspot-logo"></div>
-                        </div>
-                        <div class="automation-flow">
-                            <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_qp1q7mct.json" background="transparent" speed="1" style="width: 100%; height: 100%" loop autoplay></lottie-player>
+                    <h3 class="text-2xl font-medium mb-4">夏 Summer</h3>
+                    <p class="text-gray-600">Cool, refreshing dishes featuring alpine herbs and crystal-clear mountain spring flavors.</p>
+                </div>
+
+                <!-- Autumn -->
+                <div class="season-card relative group cursor-pointer scroll-reveal" data-season="autumn">
+                    <div class="aspect-square rounded-2xl overflow-hidden mb-6">
+                        <div class="w-full h-full bg-gradient-to-br from-orange-200 to-red-200 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-700">
+                            🍁
                         </div>
                     </div>
+                    <h3 class="text-2xl font-medium mb-4">秋 Autumn</h3>
+                    <p class="text-gray-600">Rich, warming flavors of harvest vegetables and golden mountain mushrooms.</p>
+                </div>
+
+                <!-- Winter -->
+                <div class="season-card relative group cursor-pointer scroll-reveal" data-season="winter">
+                    <div class="aspect-square rounded-2xl overflow-hidden mb-6">
+                        <div class="w-full h-full bg-gradient-to-br from-gray-200 to-blue-100 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-700">
+                            ❄️
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-medium mb-4">冬 Winter</h3>
+                    <p class="text-gray-600">Contemplative dishes featuring preserved vegetables and warming broths of pure essence.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Services Section -->
-        <section id="services" class="services-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Services</h2>
-                    <p class="section-subtitle">Performance-Driven Solutions</p>
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-light text-center mb-16 scroll-reveal">Seasonal Tasting Menu</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="menu-card glassmorphic rounded-2xl p-8 scroll-reveal">
+                    <div class="text-4xl mb-4">🌱</div>
+                    <h3 class="text-2xl font-medium mb-4">Mountain Greens</h3>
+                    <p class="text-gray-600 mb-6">Wild foraged vegetables with mountain miso and sesame oil</p>
+                    <div class="text-lg font-medium text-blue-600">First Course</div>
                 </div>
-                <div class="services-grid">
-                    <div class="service-card" data-service="meta">
-                        <div class="service-icon">
-                            <div class="meta-ads-icon"></div>
-                        </div>
-                        <h3>Meta Ads</h3>
-                        <p>Strategic campaign structures and creative optimization for maximum ROAS on Facebook & Instagram.</p>
-                    </div>
-                    <div class="service-card" data-service="google">
-                        <div class="service-icon">
-                            <div class="google-ads-icon"></div>
-                        </div>
-                        <h3>Google Ads</h3>
-                        <p>Data-driven search, display, and shopping campaigns that capture high-intent traffic and drive conversions.</p>
-                    </div>
-                    <div class="service-card" data-service="seo">
-                        <div class="service-icon">
-                            <div class="seo-icon"></div>
-                        </div>
-                        <h3>SEO</h3>
-                        <p>Technical optimization and content strategy to improve organic visibility and reduce acquisition costs.</p>
-                    </div>
-                    <div class="service-card" data-service="automation">
-                        <div class="service-icon">
-                            <div class="automation-icon"></div>
-                        </div>
-                        <h3>Marketing Automation</h3>
-                        <p>Custom workflow design and implementation to streamline operations and enhance customer journeys.</p>
-                    </div>
+
+                <div class="menu-card glassmorphic rounded-2xl p-8 scroll-reveal">
+                    <div class="text-4xl mb-4">🍄</div>
+                    <h3 class="text-2xl font-medium mb-4">Forest Floor</h3>
+                    <p class="text-gray-600 mb-6">Seasonal mushrooms in delicate kombu broth</p>
+                    <div class="text-lg font-medium text-blue-600">Second Course</div>
+                </div>
+
+                <div class="menu-card glassmorphic rounded-2xl p-8 scroll-reveal">
+                    <div class="text-4xl mb-4">🌸</div>
+                    <h3 class="text-2xl font-medium mb-4">Sakura Essence</h3>
+                    <p class="text-gray-600 mb-6">Cherry blossom tempura with mountain vegetables</p>
+                    <div class="text-lg font-medium text-blue-600">Third Course</div>
+                </div>
+
+                <div class="menu-card glassmorphic rounded-2xl p-8 scroll-reveal">
+                    <div class="text-4xl mb-4">🥢</div>
+                    <h3 class="text-2xl font-medium mb-4">Zen Garden</h3>
+                    <p class="text-gray-600 mb-6">Artfully arranged seasonal vegetables in perfect harmony</p>
+                    <div class="text-lg font-medium text-blue-600">Main Course</div>
+                </div>
+
+                <div class="menu-card glassmorphic rounded-2xl p-8 scroll-reveal">
+                    <div class="text-4xl mb-4">🍃</div>
+                    <h3 class="text-2xl font-medium mb-4">Mountain Mist</h3>
+                    <p class="text-gray-600 mb-6">Delicate tofu cloud with seasonal fruit essence</p>
+                    <div class="text-lg font-medium text-blue-600">Dessert</div>
+                </div>
+
+                <div class="menu-card glassmorphic rounded-2xl p-8 scroll-reveal">
+                    <div class="text-4xl mb-4">🍵</div>
+                    <h3 class="text-2xl font-medium mb-4">Sacred Tea</h3>
+                    <p class="text-gray-600 mb-6">Ceremonial matcha from the slopes of Mount Fuji</p>
+                    <div class="text-lg font-medium text-blue-600">Tea Ceremony</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Portfolio/Case Studies Section -->
-        <section id="portfolio" class="portfolio-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Portfolio</h2>
-                    <p class="section-subtitle">Case Studies & Results</p>
-                </div>
-                <div class="portfolio-grid">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="portfolio-placeholder ecommerce-case"></div>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>DTC Beauty Brand</h3>
-                            <p>Scaled ad spend from $10K to $50K monthly while maintaining ROAS targets.</p>
-                            <div class="metrics">
-                                <div class="metric">
-                                    <span class="metric-value" data-value="3.8">0</span>
-                                    <span class="metric-label">ROAS</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value" data-value="42">0</span>
-                                    <span class="metric-label">CTR%</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value" data-value="127">0</span>
-                                    <span class="metric-label">CPA Reduction</span>
-                                </div>
-                            </div>
-                            <a href="#" class="portfolio-link">View Case Study</a>
-                        </div>
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 parallax" style="background: linear-gradient(45deg, #6DAEDB 0%, #E0E4E8 100%); opacity: 0.1;"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-5xl font-light text-center mb-16 scroll-reveal">The Fuji Zen Experience</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="scroll-reveal">
+                        <h3 class="text-3xl font-light mb-6">Seasonal Transformation</h3>
+                        <p class="text-lg mb-6 text-gray-700">
+                            Our restaurant transforms with each season, just like the sacred Mount Fuji. 
+                            From spring's delicate cherry blossoms to winter's contemplative snow, 
+                            every visit offers a unique journey through time and taste.
+                        </p>
+                        <p class="text-lg text-gray-700">
+                            Experience mindful dining where each dish tells the story of the mountain's 
+                            eternal cycle, crafted with ingredients that honor the land and seasons.
+                        </p>
                     </div>
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="portfolio-placeholder saas-case"></div>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>B2B SaaS Platform</h3>
-                            <p>Implemented full-funnel strategy that increased qualified demo bookings by 215%.</p>
-                            <div class="metrics">
-                                <div class="metric">
-                                    <span class="metric-value" data-value="215">0</span>
-                                    <span class="metric-label">Lead Increase</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value" data-value="18.5">0</span>
-                                    <span class="metric-label">CTR%</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value" data-value="32">0</span>
-                                    <span class="metric-label">Cost Reduction</span>
-                                </div>
-                            </div>
-                            <a href="#" class="portfolio-link">View Case Study</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="portfolio-placeholder agency-case"></div>
-                        </div>
-                        <div class="portfolio-content">
-                            <h3>Marketing Agency</h3>
-                            <p>Developed white-label automation system that reduced campaign management time by 68%.</p>
-                            <div class="metrics">
-                                <div class="metric">
-                                    <span class="metric-value" data-value="68">0</span>
-                                    <span class="metric-label">Time Saved</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value" data-value="12">0</span>
-                                    <span class="metric-label">Client Retention</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-value" data-value="4.2">0</span>
-                                    <span class="metric-label">ROAS Improvement</span>
-                                </div>
-                            </div>
-                            <a href="#" class="portfolio-link">View Case Study</a>
+                    <div class="scroll-reveal">
+                        <div class="aspect-square rounded-2xl bg-gradient-to-br from-blue-200 to-gray-200 flex items-center justify-center text-8xl">
+                            🗻
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Testimonials</h2>
-                    <p class="section-subtitle">Client Success Stories</p>
-                </div>
-                <div class="testimonials-slider" id="testimonialsSlider">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"The automation systems implemented have completely transformed our marketing operations. We're now able to scale campaigns faster with fewer resources."</p>
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-900 to-blue-900"></div>
+        <div class="floating-particles">
+            <div class="particle" style="left: 15%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 35%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 55%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 75%; animation-delay: 1s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-5xl font-light text-center mb-16 text-white scroll-reveal">Reserve Your Journey</h2>
+            
+            <div class="max-w-2xl mx-auto">
+                <form class="booking-form rounded-2xl p-8 scroll-reveal">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-white mb-2">Name</label>
+                            <input type="text" class="w-full p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400" placeholder="Your name">
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-image client1"></div>
-                            <div class="author-info">
-                                <h4>Sarah Johnson</h4>
-                                <p>Marketing Director, White Label Agency</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"Our e-commerce revenue increased by 215% within just 3 months of implementing the recommended ad strategy. The data-driven approach made all the difference."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-image client2"></div>
-                            <div class="author-info">
-                                <h4>Michael Chen</h4>
-                                <p>Founder, DTC Brand</p>
-                            </div>
+                        <div>
+                            <label class="block text-white mb-2">Email</label>
+                            <input type="email" class="w-full p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400" placeholder="your@email.com">
                         </div>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"The white-label services provided allowed us to expand our agency offerings without hiring additional specialists. Our clients are thrilled with the results."</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-white mb-2">Date</label>
+                            <input type="date" class="w-full p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-white focus:outline-none focus:border-blue-400">
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-image client3"></div>
-                            <div class="author-info">
-                                <h4>Alex Rodriguez</h4>
-                                <p>CEO, Digital Marketing Agency</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Contact</h2>
-                    <p class="section-subtitle">Let's Discuss Your Project</p>
-                </div>
-                <div class="contact-container">
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                            <span class="error-message" id="nameError"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                            <span class="error-message" id="emailError"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="projectType">Project Type</label>
-                            <select id="projectType" name="projectType" required>
-                                <option value="" disabled selected>Select a project type</option>
-                                <option value="meta-ads">Meta Ads</option>
-                                <option value="google-ads">Google Ads</option>
-                                <option value="seo">SEO</option>
-                                <option value="automation">Marketing Automation</option>
-                                <option value="other">Other</option>
+                        <div>
+                            <label class="block text-white mb-2">Guests</label>
+                            <select class="w-full p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-white focus:outline-none focus:border-blue-400">
+                                <option value="2">2 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="6">6 Guests</option>
+                                <option value="8">8 Guests</option>
                             </select>
-                            <span class="error-message" id="projectTypeError"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" required></textarea>
-                            <span class="error-message" id="messageError"></span>
-                        </div>
-                        <button type="submit" class="submit-button">
-                            <span class="button-text">Send Message</span>
-                            <span class="button-icon"></span>
-                        </button>
-                        <div class="form-success" id="formSuccess">
-                            <p>Your message has been sent successfully! I'll get back to you soon.</p>
-                        </div>
-                    </form>
-                    <div class="contact-info">
-                        <div class="contact-method">
-                            <div class="contact-icon email-icon"></div>
-                            <a href="mailto:hello@growthexpert.com">hello@growthexpert.com</a>
-                        </div>
-                        <div class="contact-method">
-                            <div class="contact-icon whatsapp-icon"></div>
-                            <a href="https://wa.me/1234567890" target="_blank">WhatsApp Chat</a>
-                        </div>
-                        <div class="contact-method">
-                            <div class="contact-icon calendar-icon"></div>
-                            <a href="#" class="calendly-link" id="calendlyLink">Schedule a Call</a>
-                        </div>
-                        <div class="social-links">
-                            <a href="#" class="social-link linkedin" aria-label="LinkedIn Profile"></a>
-                            <a href="#" class="social-link twitter" aria-label="Twitter Profile"></a>
-                            <a href="#" class="social-link instagram" aria-label="Instagram Profile"></a>
                         </div>
                     </div>
-                </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-white mb-2">Preferred Season</label>
+                        <select class="w-full p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-white focus:outline-none focus:border-blue-400">
+                            <option value="current">Current Season</option>
+                            <option value="spring">Spring Experience</option>
+                            <option value="summer">Summer Experience</option>
+                            <option value="autumn">Autumn Experience</option>
+                            <option value="winter">Winter Experience</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <label class="block text-white mb-2">Special Requests</label>
+                        <textarea class="w-full p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400" rows="4" placeholder="Dietary restrictions, celebrations, or special requests..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full py-4 glassmorphic text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-20 transition-all transform hover:scale-105">
+                        Reserve Your Table
+                    </button>
+                </form>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="#">Growth<span>Expert</span></a>
+    <footer class="py-12 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                        <span class="text-blue-400">富士</span> Zen
+                    </h3>
+                    <p class="text-gray-400">
+                        Seasonal vegetarian fine dining inspired by the eternal beauty of Mount Fuji.
+                    </p>
                 </div>
-                <div class="footer-links">
-                    <ul>
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Contact</h4>
+                    <p class="text-gray-400 mb-2">📍 123 Mountain View Lane</p>
+                    <p class="text-gray-400 mb-2">📞 +81 (0)3-1234-5678</p>
+                    <p class="text-gray-400">✉️ hello@fujizen.jp</p>
                 </div>
-                <div class="footer-social">
-                    <a href="#" class="social-link linkedin" aria-label="LinkedIn Profile"></a>
-                    <a href="#" class="social-link twitter" aria-label="Twitter Profile"></a>
-                    <a href="#" class="social-link instagram" aria-label="Instagram Profile"></a>
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Hours</h4>
+                    <p class="text-gray-400 mb-2">Dinner: 6:00 PM - 10:00 PM</p>
+                    <p class="text-gray-400 mb-2">Closed Mondays</p>
+                    <p class="text-gray-400">Reservations Required</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> GrowthExpert. All rights reserved.</p>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Fuji Zen. All rights reserved. | Crafted with respect for nature and tradition.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Cursor Effect (Desktop Only) -->
-    <div class="cursor-glow" id="cursorGlow"></div>
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
 
-    <!-- JavaScript -->
-    <script src="main.js"></script>
-    
-    <!-- Calendly Integration -->
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        // Season management
+        const seasons = ['spring', 'summer', 'autumn', 'winter'];
+        const seasonEmojis = ['🌸', '🌊', '🍁', '❄️'];
+        let currentSeasonIndex = 1; // Start with summer
+
+        const seasonToggle = document.getElementById('seasonToggle');
+        const body = document.body;
+
+        function updateSeason(seasonIndex) {
+            // Remove all season classes
+            seasons.forEach(season => body.classList.remove(`season-${season}`));
+            // Add current season class
+            body.classList.add(`season-${seasons[seasonIndex]}`);
+            // Update toggle button
+            seasonToggle.querySelector('span').textContent = seasonEmojis[seasonIndex];
+            
+            // Update hero background based on season
+            const heroBackground = document.getElementById('heroBackground');
+            const seasonGradients = [
+                'linear-gradient(135deg, #E8F5E8 0%, #90EE90 50%, #98FB98 100%)', // Spring
+                'linear-gradient(135deg, #6DAEDB 0%, #E0E4E8 50%, #87CEEB 100%)', // Summer  
+                'linear-gradient(135deg, #FFC857 0%, #FFE4B5 50%, #DEB887 100%)', // Autumn
+                'linear-gradient(135deg, #E0E4E8 0%, #F0F8FF 50%, #B0C4DE 100%)'  // Winter
+            ];
+            heroBackground.style.background = seasonGradients[seasonIndex];
+        }
+
+        seasonToggle.addEventListener('click', () => {
+            currentSeasonIndex = (currentSeasonIndex + 1) % seasons.length;
+            updateSeason(currentSeasonIndex);
+        });
+
+        // Season card interactions
+        document.querySelectorAll('.season-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const season = card.dataset.season;
+                const seasonIndex = seasons.indexOf(season);
+                if (seasonIndex !== -1) {
+                    currentSeasonIndex = seasonIndex;
+                    updateSeason(seasonIndex);
+                }
+            });
+        });
+
+        // Audio toggle
+        let audioEnabled = false;
+        const audioToggle = document.getElementById('audioToggle');
+        
+        audioToggle.addEventListener('click', () => {
+            audioEnabled = !audioEnabled;
+            audioToggle.querySelector('span').textContent = audioEnabled ? '🔊' : '🔇';
+            // Here you would implement actual audio functionality
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible', 'revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe fade-in and scroll-reveal elements
+        document.querySelectorAll('.fade-in, .scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial season
+            updateSeason(currentSeasonIndex);
+            
+            // Trigger initial fade-ins
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        });
+
+        // Gradient animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes gradientShift {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your reservation request! We will contact you shortly to confirm your booking.');
+        });
+
+        // Menu card hover effects
+        document.querySelectorAll('.menu-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) rotateX(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) rotateX(0)';
+            });
+        });
+
+        // Auto-detect season based on date
+        function getSeasonFromDate() {
+            const month = new Date().getMonth() + 1;
+            if (month >= 3 && month <= 5) return 0; // Spring
+            if (month >= 6 && month <= 8) return 1; // Summer
+            if (month >= 9 && month <= 11) return 2; // Autumn
+            return 3; // Winter
+        }
+
+        // Set initial season based on current date
+        currentSeasonIndex = getSeasonFromDate();
+    </script>
 </body>
 </html>
