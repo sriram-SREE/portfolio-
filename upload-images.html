@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Your Mount Fuji Images</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #4F46E5, #F8BBD9);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #4F46E5;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .upload-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px dashed #4F46E5;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .upload-section h3 {
+            color: #1F2937;
+            margin-bottom: 10px;
+        }
+        .upload-section p {
+            color: #6B7280;
+            margin-bottom: 15px;
+        }
+        input[type="file"] {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .preview {
+            max-width: 300px;
+            max-height: 200px;
+            margin: 10px auto;
+            border-radius: 8px;
+            display: none;
+        }
+        .instructions {
+            background: #FDF2F8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .instructions h3 {
+            color: #4F46E5;
+            margin-bottom: 15px;
+        }
+        .step {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #F8BBD9;
+        }
+        button {
+            background: #4F46E5;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #3B82F6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏔️ Upload Your Mount Fuji Images</h1>
+        
+        <div class="instructions">
+            <h3>📝 Instructions:</h3>
+            <div class="step">
+                <strong>Step 1:</strong> Select your 3 Mount Fuji restaurant images below
+            </div>
+            <div class="step">
+                <strong>Step 2:</strong> Right-click each image and "Save As" to the images folder
+            </div>
+            <div class="step">
+                <strong>Step 3:</strong> Name them exactly: hero1.jpg, hero2.jpg, hero3.jpg
+            </div>
+            <div class="step">
+                <strong>Step 4:</strong> Refresh your main website to see your images!
+            </div>
+        </div>
+
+        <div class="upload-section">
+            <h3>🌸 Image 1: Spring/Evening Restaurant Exterior</h3>
+            <p>Your restaurant exterior with cherry blossoms and Mount Fuji at sunset</p>
+            <input type="file" id="image1" accept="image/*" onchange="previewImage(this, 'preview1')">
+            <img id="preview1" class="preview" alt="Preview 1">
+            <button onclick="downloadImage('preview1', 'hero1.jpg')">💾 Save as hero1.jpg</button>
+        </div>
+
+        <div class="upload-section">
+            <h3>🍽️ Image 2: Interior Dining View</h3>
+            <p>Restaurant interior with Mount Fuji view through windows and cherry blossoms</p>
+            <input type="file" id="image2" accept="image/*" onchange="previewImage(this, 'preview2')">
+            <img id="preview2" class="preview" alt="Preview 2">
+            <button onclick="downloadImage('preview2', 'hero2.jpg')">💾 Save as hero2.jpg</button>
+        </div>
+
+        <div class="upload-section">
+            <h3>🏯 Image 3: Traditional Architecture</h3>
+            <p>Classic Japanese building with Mount Fuji backdrop and cherry blossoms</p>
+            <input type="file" id="image3" accept="image/*" onchange="previewImage(this, 'preview3')">
+            <img id="preview3" class="preview" alt="Preview 3">
+            <button onclick="downloadImage('preview3', 'hero3.jpg')">💾 Save as hero3.jpg</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="window.open('index.html', '_blank')" style="background: #F8BBD9; color: #1F2937;">
+                🌸 View Your Restaurant Website
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function previewImage(input, previewId) {
+            const file = input.files[0];
+            const preview = document.getElementById(previewId);
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function downloadImage(previewId, filename) {
+            const preview = document.getElementById(previewId);
+            if (preview.src) {
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = preview.src;
+                link.click();
+                
+                alert(`✅ ${filename} is ready to download!\n\n📁 Save it to your 'images' folder, then refresh your website to see your Mount Fuji image!`);
+            } else {
+                alert('⚠️ Please select an image first!');
+            }
+        }
+    </script>
+</body>
+</html>

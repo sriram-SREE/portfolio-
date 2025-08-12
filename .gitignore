@@ -1,0 +1,14 @@
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore node modules and logs
+node_modules/
+*.log
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore deployment config
+netlify.toml

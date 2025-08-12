@@ -1,0 +1,14 @@
+MOUNT FUJI RESTAURANT - IMAGE SETUP INSTRUCTIONS
+
+To display your beautiful Mount Fuji images:
+
+1. Save your 3 Mount Fuji images in the 'images' folder as:
+   - hero1.jpg (Spring/Evening restaurant exterior)
+   - hero2.jpg (Interior dining with Mount Fuji view)  
+   - hero3.jpg (Traditional Japanese building)
+
+2. The images should be JPG format, ideally 1920x1080 resolution
+
+3. Once saved, refresh your browser to see them in the carousel
+
+Current issue: Images are referenced but not yet saved to the correct location.
